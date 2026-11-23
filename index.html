@@ -1,78 +1,101 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mastuung Courier</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background: #0f172a;
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-
-    .card {
-      width: 100%;
-      max-width: 450px;
-      padding: 30px;
-      border-radius: 25px;
-      background: #1e293b;
-      text-align: center;
-      border: 1px solid #334155;
-    }
-
-    .logo {
-      font-size: 55px;
-      margin-bottom: 10px;
-    }
-
-    h1 {
-      margin: 0;
-      color: #38bdf8;
-    }
-
-    p {
-      color: #cbd5e1;
-      line-height: 1.6;
-    }
-
-    .status {
-      margin-top: 20px;
-      padding: 12px;
-      border-radius: 12px;
-      background: #064e3b;
-      color: #a7f3d0;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mastuung Courier — MVP</title>
+<style>
+:root{--bg:#0b1220;--panel:#121c2d;--panel2:#18253a;--line:#26364d;--text:#edf4ff;--muted:#9aacc5;--blue:#55b6ff;--green:#42d392;--orange:#ffb454;--red:#ff667a}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 10% 0,#142744,transparent 35%),var(--bg);color:var(--text);font-family:Inter,system-ui,Segoe UI,Arial,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:12px;padding:11px 15px;background:var(--blue);color:#061321;font-weight:750}button.secondary{background:var(--panel2);border:1px solid var(--line);color:var(--text)}button.danger{background:var(--red);color:#25050b}button.small{padding:7px 10px;font-size:12px}.wrap{max-width:1180px;margin:auto;padding:22px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}.brand{display:flex;align-items:center;gap:12px}.logo{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,#6ac8ff,#2878ff);font-size:23px}.brand h1{margin:0;font-size:20px}.brand small{color:var(--muted)}.card{background:linear-gradient(160deg,#142137,#101a2a);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:15px;box-shadow:0 12px 30px #0002}.login{max-width:440px;margin:8vh auto}.login h2{margin:5px 0 8px}.muted{color:var(--muted)}.warn{padding:12px;background:#382a17;border:1px solid #6e4c1f;color:#ffd89c;border-radius:12px;font-size:13px;margin:14px 0}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.stat{padding:16px;background:var(--panel2);border:1px solid var(--line);border-radius:15px}.stat small{color:var(--muted)}.stat strong{display:block;font-size:25px;margin-top:8px}.layout{display:grid;grid-template-columns:1.15fr .85fr;gap:15px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}.field label{font-size:13px;color:var(--muted)}input,select,textarea{width:100%;padding:11px 12px;border-radius:11px;background:#0c1524;border:1px solid var(--line);color:var(--text);outline:none}textarea{min-height:70px;resize:vertical}.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.tabs button{background:var(--panel2);color:var(--muted);border:1px solid var(--line)}.tabs button.active{background:#17436b;color:white;border-color:#2677b8}.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;min-width:700px}th,td{text-align:left;padding:11px 9px;border-bottom:1px solid var(--line);font-size:13px}th{color:var(--muted);font-weight:650}.badge{display:inline-block;padding:4px 8px;border-radius:30px;font-size:11px;font-weight:700;background:#23354c}.badge.done{color:var(--green);background:#103629}.badge.cancel{color:var(--red);background:#3a1c27}.badge.run{color:var(--orange);background:#3c2c16}.hidden{display:none!important}.sectiontitle{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}.sectiontitle h2{font-size:17px;margin:0}.notice{font-size:12px;color:var(--muted)}.total{font-size:20px;font-weight:800;color:var(--green)}.activity{max-height:320px;overflow:auto}.activityitem{padding:10px 0;border-bottom:1px solid var(--line);font-size:13px}.activityitem small{display:block;color:var(--muted);margin-top:3px}.footer{color:var(--muted);font-size:12px;text-align:center;padding:18px}.dangertext{color:var(--red)}@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}.layout{grid-template-columns:1fr}.wrap{padding:14px}.top{align-items:flex-start}.formgrid{grid-template-columns:1fr 1fr}}@media(max-width:480px){.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}.top .row button{padding:9px}.brand h1{font-size:17px}}
+</style>
 </head>
-
 <body>
+<div class="wrap">
+<header class="top">
+  <div class="brand"><div class="logo">🏍️</div><div><h1>MASTUUNG COURIER</h1><small>Order · Tarif · Aktivitas</small></div></div>
+  <div id="topUser" class="row hidden"><span id="userLabel" class="muted"></span><button class="secondary small" onclick="logout()">Keluar</button></div>
+</header>
 
-  <div class="card">
-    <div class="logo">🏍️</div>
+<section id="loginScreen" class="card login">
+  <h2>Selamat datang</h2><p class="muted">Masuk ke dashboard Mastuung (demo lokal)</p>
+  <div class="field"><label>Username</label><input id="loginUser" autocomplete="username" placeholder="username"></div>
+  <div class="field" style="margin-top:10px"><label>Password</label><input id="loginPass" type="password" autocomplete="current-password" placeholder="password"></div>
+  <button style="width:100%;margin-top:14px" onclick="login()">MASUK</button>
+  <div class="warn"><b>Akun demo:</b><br>Admin: <code>admin</code> / <code>admin123</code><br>Driver: <code>driver01</code> / <code>driver123</code><br><br>Ini hanya prototype lokal. Login bukan keamanan sungguhan; jangan gunakan data pribadi/operasional sensitif.</div>
+</section>
 
-    <h1>MASTUUNG COURIER</h1>
+<main id="app" class="hidden">
+<div class="grid" id="stats"></div>
+<nav class="tabs">
+<button class="active" data-tab="orders" onclick="showTab('orders')">🧾 Order</button>
+<button data-tab="report" onclick="showTab('report')">📊 Laporan</button>
+<button data-tab="activity" onclick="showTab('activity')">🕒 Aktivitas</button>
+<button data-tab="settings" id="settingsTab" onclick="showTab('settings')">⚙️ Tarif</button>
+</nav>
 
-    <p>
-      Sistem pencatatan order, tarif,
-      dan aktivitas kurir lokal.
-    </p>
+<section id="ordersTab">
+<div class="layout">
+<div class="card">
+<div class="sectiontitle"><h2>Tambah Order</h2><span class="notice">ID dibuat otomatis</span></div>
+<form id="orderForm" class="formgrid">
+<div class="field"><label>Nama pelanggan *</label><input id="customer" required placeholder="Nama pelanggan"></div>
+<div class="field"><label>WhatsApp</label><input id="phone" placeholder="08xxxxxxxxxx"></div>
+<div class="field"><label>Driver</label><input id="driverName" placeholder="Nama driver" required></div>
+<div class="field"><label>Jenis layanan</label><select id="category"><option>Antar barang</option><option>Belanja</option><option>Antar makanan</option><option>Jasa lainnya</option></select></div>
+<div class="field"><label>Jarak (km)</label><input id="distance" type="number" min="0" step="0.1" value="1" required oninput="calcFare()"></div>
+<div class="field"><label>Tarif tambahan (Rp)</label><input id="extra" type="number" min="0" step="1000" value="0" oninput="calcFare()"></div>
+<div class="field full"><label>Tujuan / alamat singkat *</label><input id="destination" required placeholder="Alamat atau nama lokasi tujuan"></div>
+<div class="field full"><label>Catatan</label><textarea id="notes" placeholder="Catatan pesanan (opsional)"></textarea></div>
+<div class="field full"><label>Perkiraan tarif</label><div class="total" id="fareDisplay">Rp 5.000</div><span class="notice" id="fareInfo">Tarif dasar dan per km bisa diatur di menu Tarif (Admin).</span></div>
+<div class="field full row"><button type="submit">＋ SIMPAN ORDER</button><button type="reset" class="secondary" onclick="setTimeout(calcFare,0)">Reset</button></div>
+</form>
+</div>
+<div class="card">
+<div class="sectiontitle"><h2>Daftar Order</h2><span class="notice" id="orderCount"></span></div>
+<div class="tablewrap"><table><thead><tr><th>ID</th><th>Pelanggan / tujuan</th><th>Driver</th><th>Tarif</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="orderRows"></tbody></table></div>
+</div>
+</section>
 
-    <div class="status">
-      Website berhasil dibuat!
-    </div>
-  </div>
+<section id="reportTab" class="hidden">
+<div class="card"><div class="sectiontitle"><h2>Ringkasan Laporan</h2><button class="small" onclick="exportCSV()">⬇ Export CSV</button></div>
+<div id="reportSummary" class="grid"></div><div class="tablewrap" style="margin-top:15px"><table><thead><tr><th>Driver</th><th>Order selesai</th><th>Total tarif selesai</th><th>Batal</th></tr></thead><tbody id="driverReport"></tbody></table></div></div>
+</section>
 
+<section id="activityTab" class="hidden"><div class="card"><div class="sectiontitle"><h2>Riwayat Aktivitas</h2><button class="secondary small" onclick="clearActivity()" id="clearActivityBtn">Bersihkan log</button></div><div class="activity" id="activityList"></div></div></section>
+
+<section id="settingsTabContent" class="hidden"><div class="card"><div class="sectiontitle"><h2>Pengaturan Tarif</h2><span class="notice">Admin saja</span></div><div class="formgrid"><div class="field"><label>Tarif dasar (Rp)</label><input id="baseFare" type="number" min="0" step="1000"></div><div class="field"><label>Tarif per kilometer (Rp)</label><input id="perKm" type="number" min="0" step="500"></div><div class="field"><label>Minimum tarif (Rp)</label><input id="minFare" type="number" min="0" step="1000"></div><div class="field"><label>Nama usaha</label><input id="businessName" value="Mastuung Courier"></div></div><button style="margin-top:12px" onclick="saveSettings()">Simpan pengaturan</button></div></section>
+</main>
+<div class="footer">Mastuung Courier · Prototype gratis berbasis browser · Data lokal pada perangkat ini</div>
+</div>
+<script>
+const DEMO_USERS={admin:{password:"admin123",role:"admin",name:"Admin Mastuung"},driver01:{password:"driver123",role:"driver",name:"Driver 01"}};
+const STORAGE={orders:"mastuung_mvp_orders",activity:"mastuung_mvp_activity",settings:"mastuung_mvp_settings"};
+const defaults={base:3000,perKm:2000,min:5000,business:"Mastuung Courier"};
+let currentUser=null,activeTab="orders";
+const money=n=>"Rp "+Number(n||0).toLocaleString("id-ID");
+const read=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))??d}catch{return d}};
+let orders=read(STORAGE.orders,[]),activity=read(STORAGE.activity,[]),settings=read(STORAGE.settings,defaults);
+function persist(){localStorage.setItem(STORAGE.orders,JSON.stringify(orders));localStorage.setItem(STORAGE.activity,JSON.stringify(activity));localStorage.setItem(STORAGE.settings,JSON.stringify(settings))}
+function stamp(){return new Date().toLocaleString("id-ID")}
+function log(message,orderId=""){activity.unshift({time:stamp(),user:currentUser?.name||"System",message,orderId});persist();renderActivity()}
+function login(){let u=document.getElementById("loginUser").value.trim().toLowerCase(),p=document.getElementById("loginPass").value;let found=DEMO_USERS[u];if(!found||found.password!==p){alert("Username atau password salah.");return}currentUser={username:u,...found};document.getElementById("loginScreen").classList.add("hidden");document.getElementById("app").classList.remove("hidden");document.getElementById("topUser").classList.remove("hidden");document.getElementById("userLabel").textContent=currentUser.name+" · "+(currentUser.role==="admin"?"Admin":"Driver");document.getElementById("settingsTab").classList.toggle("hidden",currentUser.role!=="admin");document.getElementById("clearActivityBtn").classList.toggle("hidden",currentUser.role!=="admin");document.getElementById("driverName").value=currentUser.role==="driver"?currentUser.name:"";document.getElementById("driverName").readOnly=currentUser.role==="driver";log("Login");showTab("orders");renderAll()}
+function logout(){if(currentUser)log("Logout");currentUser=null;document.getElementById("app").classList.add("hidden");document.getElementById("loginScreen").classList.remove("hidden");document.getElementById("topUser").classList.add("hidden");document.getElementById("loginPass").value=""}
+function showTab(tab){activeTab=tab;document.querySelectorAll(".tabs button").forEach(b=>b.classList.toggle("active",b.dataset.tab===tab));const targets={orders:"ordersTab",report:"reportTab",activity:"activityTab",settings:"settingsTabContent"};Object.entries(targets).forEach(([t,id])=>document.getElementById(id).classList.toggle("hidden",t!==tab));if(tab==="report")renderReport();if(tab==="activity")renderActivity();if(tab==="settings")loadSettings()}
+function calcFare(){let km=Number(document.getElementById("distance").value)||0,extra=Number(document.getElementById("extra").value)||0;let fare=Math.max(settings.min,settings.base+km*settings.perKm)+extra;document.getElementById("fareDisplay").textContent=money(fare);document.getElementById("fareInfo").textContent=`Dasar ${money(settings.base)} + ${money(settings.perKm)}/km · minimum ${money(settings.min)}`;return fare}
+document.getElementById("orderForm").addEventListener("submit",e=>{e.preventDefault();if(!currentUser)return;let order={id:"MST-"+Date.now().toString().slice(-7),created:stamp(),customer:customer.value.trim(),phone:phone.value.trim(),driver:driverName.value.trim(),category:category.value,distance:Number(distance.value)||0,extra:Number(extra.value)||0,destination:destination.value.trim(),notes:notes.value.trim(),fare:calcFare(),status:"Berjalan",creator:currentUser.name};orders.unshift(order);persist();log("Membuat order "+order.id,order.id);e.target.reset();distance.value=1;extra.value=0;if(currentUser.role==="driver")driverName.value=currentUser.name;calcFare();renderAll()});
+function changeStatus(id,status){let o=orders.find(x=>x.id===id);if(!o)return;if(status==="Batal"){let reason=prompt("Alasan pembatalan?");if(!reason||!reason.trim())return;o.cancelReason=reason.trim()}o.status=status;o.updated=stamp();persist();log("Order "+id+" → "+status+(o.cancelReason?"; alasan: "+o.cancelReason:""),id);renderAll()}
+function visibleOrders(){return currentUser.role==="admin"?orders:orders.filter(o=>o.driver===currentUser.name||o.creator===currentUser.name)}
+function renderOrders(){let list=visibleOrders();orderCount.textContent=list.length+" order";orderRows.innerHTML=list.map(o=>`<tr><td>${esc(o.id)}</td><td><b>${esc(o.customer)}</b><br><span class="muted">${esc(o.destination)}</span></td><td>${esc(o.driver)}</td><td>${money(o.fare)}</td><td><span class="badge ${o.status==="Selesai"?"done":o.status==="Batal"?"cancel":"run"}">${esc(o.status)}</span></td><td>${o.status==="Berjalan"?`<button class="small" onclick="changeStatus('${o.id}','Selesai')">Selesai</button> <button class="small danger" onclick="changeStatus('${o.id}','Batal')">Batal</button>`:"—"}</td></tr>`).join("")||`<tr><td colspan="6" class="muted">Belum ada order</td></tr>`}
+function renderStats(){let list=visibleOrders(),done=list.filter(o=>o.status==="Selesai"),running=list.filter(o=>o.status==="Berjalan"),cancel=list.filter(o=>o.status==="Batal"),sum=done.reduce((a,o)=>a+o.fare,0);stats.innerHTML=[["Total order",list.length],["Berjalan",running.length],["Selesai",done.length],["Tarif selesai",money(sum)]].map(s=>`<div class="stat"><small>${s[0]}</small><strong>${s[1]}</strong></div>`).join("")}
+function renderReport(){let list=visibleOrders(),done=list.filter(o=>o.status==="Selesai"),cancel=list.filter(o=>o.status==="Batal");reportSummary.innerHTML=[["Total order",list.length],["Order selesai",done.length],["Order batal",cancel.length],["Total tarif selesai",money(done.reduce((a,o)=>a+o.fare,0))]].map(s=>`<div class="stat"><small>${s[0]}</small><strong>${s[1]}</strong></div>`).join("");let names=[...new Set(list.map(o=>o.driver))];driverReport.innerHTML=names.map(n=>{let d=list.filter(o=>o.driver===n),dd=d.filter(o=>o.status==="Selesai"),bb=d.filter(o=>o.status==="Batal");return `<tr><td>${esc(n)}</td><td>${dd.length}</td><td>${money(dd.reduce((a,o)=>a+o.fare,0))}</td><td>${bb.length}</td></tr>`}).join("")||`<tr><td colspan="4">Belum ada data</td></tr>`}
+function renderActivity(){let a=currentUser?.role==="admin"?activity:activity.filter(x=>x.user===currentUser?.name);activityList.innerHTML=a.map(x=>`<div class="activityitem"><b>${esc(x.message)}</b><small>${esc(x.time)} · ${esc(x.user)}${x.orderId?" · "+esc(x.orderId):""}</small></div>`).join("")||`<p class="muted">Belum ada aktivitas</p>`}
+function renderAll(){renderOrders();renderStats();if(activeTab==="report")renderReport();if(activeTab==="activity")renderActivity()}
+function loadSettings(){baseFare.value=settings.base;perKm.value=settings.perKm;minFare.value=settings.min;businessName.value=settings.business}
+function saveSettings(){if(currentUser?.role!=="admin")return alert("Hanya Admin.");settings={base:Number(baseFare.value)||0,perKm:Number(perKm.value)||0,min:Number(minFare.value)||0,business:businessName.value.trim()||"Mastuung Courier"};persist();log("Mengubah pengaturan tarif");calcFare();alert("Pengaturan tersimpan di browser ini.");renderAll()}
+function clearActivity(){if(currentUser?.role!=="admin")return;if(confirm("Hapus semua aktivitas?")){activity=[];persist();renderActivity()}}
+function exportCSV(){let rows=[["ID","Tanggal","Pelanggan","WhatsApp","Driver","Kategori","Jarak km","Tujuan","Tarif","Status","Catatan","Alasan batal"],...visibleOrders().map(o=>[o.id,o.created,o.customer,o.phone,o.driver,o.category,o.distance,o.destination,o.fare,o.status,o.notes||"",o.cancelReason||""])];let csv=rows.map(r=>r.map(v=>`"${String(v??"").replaceAll('"','""')}"`).join(",")).join("\r\n");let blob=new Blob(["\ufeff"+csv],{type:"text/csv;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="laporan-mastuung.csv";a.click();URL.revokeObjectURL(url)}
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+calcFare();
+</script>
 </body>
 </html>
